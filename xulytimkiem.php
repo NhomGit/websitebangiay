@@ -4,6 +4,8 @@
 		$v=$_GET["proname"];
 		$tk=$shoes->search($v);
 		//$sql="select * from tbproduct where PRONAME like '%$v%'";
+		//$sql="select * from tbproduct where PRONAME like '%$v%'";
+		//$sql="select * from tbproduct where PRONAME like '%$v%'";
 		//$tk=$db->selectQuery($sql);
 		
 		//if($n>0)
