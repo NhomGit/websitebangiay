@@ -1,4 +1,69 @@
-﻿<section>
+﻿//xu ly dang nhap
+<?php
+//require_once"classes/db.class.php";
+//$db=new db();
+?>
+<?php
+$email=postIndex("txtEmail");
+$pass=postIndex("txtPass");
+$error="";
+$success="";
+$flag2=true;
+if(isset($_POST["dn"]))
+{
+	if($pass!="" && $email!="")
+	{
+		//$query="select * from tbuser where EMAIL= :E 
+		//and PASSWORD = :P ";
+		//$arr = array(":E"=> $email, ":P"=>$pass);
+		//$rows=$db->selectQuery($query,$arr);
+		$rows=$kh->xuly_dangnhap($email,$pass);
+		//if($db->n>0)
+		if(count($rows)>0)
+		{
+			$success.="Đăng nhập thành công";
+			if (!isset($_SESSION)) session_start();
+			$_SESSION["thongtindangnhap"]= $rows[0];
+			$_SESSION["thongtindangnhap"]["id"]=$rows[0]["USERID"];
+			$_SESSION["thongtindangnhap"]["email"]=$rows[0]["EMAIL"];
+			$_SESSION["thongtindangnhap"]["name"]=$rows[0]["FULLNAME"];
+			$_SESSION["thongtindangnhap"]["phone"]=$rows[0]["PHONE"];
+			$_SESSION["thongtindangnhap"]["address"]=$rows[0]["ADDRESS"];
+			$_SESSION["thongtindangnhap"]["pass"]=$rows[0]["PASSWORD"];
+			$_SESSION["thongtindangnhap"]["role"]=$rows[0]["ROLE"];
+		}
+		else
+		{
+			$error.="Lỗi nhập tài khoản hoặc mật khẩu";
+			$flag2=false;
+		}
+	}
+}
+?>
+				<?php if(!$flag2)	
+  						 echo "<div class='alert alert-danger alert-dismissable' role='alert'> $error </div>" ;
+					 else
+					  {
+						  if($success!="")
+						  {
+							  if($_SESSION["thongtindangnhap"]["role"]==0)
+							  {
+  						 		echo "<div class='alert alert-success alert-dismissable' role='alert'> $success </div>";
+								echo" <a href='index.php'>Click vào đây để về trang chủ </a>";
+							  }
+							  else
+							  {
+							  ?> <script language="javascript" >
+							  window.location="index.php/admin";
+                              </script>
+                             <?php }
+						   }
+				 	 }
+				  	?>
+
+
+-----------------
+<section>
 	<div class="container">
 			<div class="row">
             <div id="form">
