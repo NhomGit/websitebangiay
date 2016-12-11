@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 class cart extends db{
 	
@@ -182,3 +182,45 @@ class cart extends db{
 }
 	
 ?>
+<?php
+
+function getIndex($index, $value='')
+{
+	$data = isset($_GET[$index])? $_GET[$index]:$value;
+	return $data;
+}
+$ac= getValue("ac");
+$i=0;
+$i=$i+1;
+if ($ac=="add")
+{
+	$quantity = getIndex("quantity", 1);
+	$id = getIndex("id");
+	$cart->add($id, $quantity);
+}
+if ($ac=="rev")
+{
+	
+	$id = getIndex("id");
+	$cart->remove($id);
+	echo "<script language='javascript'>window.location='index.php?mod=cart'</script>";
+}
+if($ac=="tang")
+{
+	$quantity=getIndex("quantity",1);
+	$id=getIndex("id");
+	$cart->edit1($id,$quantity);
+	echo "<script language='javascript'>window.location='index.php?mod=cart'</script>";
+	
+}
+if($ac=="giam")
+{
+	$quantity=getIndex("quantity",1);
+	$id=getIndex("id");
+	$cart->edit2($id,$quantity);
+	echo "<script language='javascript'>window.location='index.php?mod=cart'</script>";
+
+}
+
+//Biến $cart được tạo từ trang chủ index.php
+$cart->show();
