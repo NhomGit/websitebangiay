@@ -1,3 +1,12 @@
+﻿----Them chuc nnang xu ly -----
+<?php xu ly dang nhap ?>
+#codecodecode
+#codecodecode
+#codecodecode
+#codecodecode
+#codecodecode
+#codecodecode
+------------------------------
 <?php
 	$arrmailsql=$kh->get_email();
 	$flag=true;
