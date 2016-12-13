@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿<?php include "cart.php" ?>
+<?php include "dangnhap.php" ?>
+<?php include "dangky.php" ?>
+<?php include "timkiem.php" ?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 
