@@ -11,7 +11,7 @@
 		if(count($tk)>0)
 		{
 			foreach($tk as $value)
-			{
+
 										
 			$id=$value["PRODUCTID"];
 	?>
